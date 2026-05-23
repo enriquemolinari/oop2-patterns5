@@ -37,16 +37,15 @@ bastante evidente para su cliente.
 
 Por ejemplo, cuando un cliente le pide a un `StorageDevice` que almacene texto, el dispositivo puede usar distintas
 técnicas de compresión (incluso ninguna). Al cliente no le importa cómo comprime, si comprime, o si comprime siempre
-igual; solo quiere almacenar y recuperar texto. Como la compresión es privada al dispositivo y está oculta al cliente,
-esos objetos de compresión son **Strategies**.
+igual, solo quiere almacenar y recuperar texto.
 
 En cambio, cuando un cliente abre una `TCPConnection`, espera que la conexión se comporte como abierta. Si luego la
-cierra, espera que se comporte como cerrada. Como el estado de la conexión es evidente para el cliente, esos objetos de
-estado son **States**.
+cierra, espera que se comporte como cerrada. El estado de la conexión es evidente para el cliente.
 
 **Implementación en conjunto con Double Dispatch**: El patrón **State** se podría implementar también utilizando double
 dispatch. En lugar de que los estados realicen lógica, los estados se limitaría exclusivamente a decidir que método del
 **Context** se debe llamar a continuación, y el **Context** implementaría toda la lógica de transición u otra lógica
 necesaria. Esto tiene pros y contras. La ventaja es que el código de transición se centraliza en el **Context** y el
 encapsulamiento del Context es más fuerte. Una contra es que al agregar un nuevo estado no basta con agregar una nueva
-clase estado sino que ademas debo modificar el **Context**.
+clase estado sino que ademas debo modificar el **Context** (Fuente: [Design Patterns Smalltalk
+Companion: State Pattern](https://rmod-files.lille.inria.fr/FreeBooks/SmalltalkDesignPatternCompanion/state.pdf)).
