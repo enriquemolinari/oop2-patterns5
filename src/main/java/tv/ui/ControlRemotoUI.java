@@ -19,6 +19,7 @@ public class ControlRemotoUI extends JFrame {
         panel.add(crearBoton("Apagar", this.televisor::apagar));
         panel.add(crearBoton("Vol +", this.televisor::subirVolumen));
         panel.add(crearBoton("Vol -", this.televisor::bajarVolumen));
+        panel.add(crearBoton("Mute", this.televisor::mutear));
         panel.add(crearBoton("Canal 1", () -> this.televisor.cambiarCanal(1)));
         panel.add(crearBoton("Canal 2", () -> this.televisor.cambiarCanal(2)));
         panel.add(crearBoton("Canal 3", () -> this.televisor.cambiarCanal(3)));

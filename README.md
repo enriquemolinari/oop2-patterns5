@@ -3,9 +3,8 @@
 **Intención**: La intención del patrón **State** es permitir que un objeto altere su comportamiento cuando cambia su
 estado interno, haciendo que parezca que cambia su clase.
 
-It localizes state-specific behavior and partitions behavior for different states. The State pattern puts all behavior
-associated with a particular state into one object. Because all state-specific code lives in a State subclass, new
-states and transitions can be added easily by defining new subclasses.
+Ideado para modelar máquinas de estado (state machines) en object oriented programming. Las máquinas de estado toman
+decisiones en funcion del estado en que se encuentran y no en comno llegaron allí.
 
 **¿Quién define la transición de estado?**: El patrón **State** no especifica qué participante define los criterios de
 transición de estado.
@@ -49,3 +48,21 @@ necesaria. Esto tiene pros y contras. La ventaja es que el código de transició
 encapsulamiento del Context es más fuerte. Una contra es que al agregar un nuevo estado no basta con agregar una nueva
 clase estado sino que ademas debo modificar el **Context** (Fuente: [Design Patterns Smalltalk
 Companion: State Pattern](https://rmod-files.lille.inria.fr/FreeBooks/SmalltalkDesignPatternCompanion/state.pdf)).
+
+## Ejemplo Televisor
+
+Observemos la implementacion sin utilizar polimorfismo, como aparencen duplicados los condicionantes preguntando por el
+estado en el que estoy para ejecutar la accion.
+
+### Tabla de estados y acciones
+
+| Estado/Accesiones | encender  | apagar  | cambiarCanal | subirVolumen | bajarVolumen | 
+|-------------------|-----------|---------|--------------|--------------|--------------|
+| encendida         | encendida | apagada | encendida    | encendida    | encendida    | 
+| apagada           | encendida | apagada | apagada      | apagada      | apagada      | 
+
+| Estado/Accesiones | encender  | apagar  | cambiarCanal | subirVolumen | bajarVolumen | Mutear  |
+|-------------------|-----------|---------|--------------|--------------|--------------|---------|
+| encendida         | encendida | apagada | encendida    | encendida    | encendida    | muteada |
+| apagada           | encendida | apagada | apagada      | apagada      | apagada      | apagada |
+| Mutedado          | muteada   | apagada | muteada      | encendida    | muteada      | muteada |

@@ -5,6 +5,6 @@ public enum TelevisorEvento {
     APAGADO,
     CANAL,
     VOLUMEN,
-    SIN_CAMBIO
+    MUTEADO,
 }
 

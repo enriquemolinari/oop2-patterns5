@@ -12,6 +12,10 @@ public class Televisor extends Observado {
         this.volumenActual = 10;
     }
 
+    public String nombreEstado() {
+        return this.estado.toString();
+    }
+
     public int volumenActual() {
         return this.volumenActual;
     }
@@ -43,19 +47,30 @@ public class Televisor extends Observado {
             this.estado = Estado.ENCENDIDO;
             this.notificar(TelevisorEvento.ENCENDIDO);
         }
-        // si esta ENCEDNDIDO no hago nada
+        // si esta ENCEDNDIDO o MUTEADO no hago nada
     }
 
     public void apagar() {
-        if (estado == Estado.ENCENDIDO) {
+        if (estado == Estado.ENCENDIDO || estado == Estado.MUTEADO) {
             this.estado = Estado.APAGADO;
             this.notificar(TelevisorEvento.APAGADO);
         }
+
         //Si esta APAGADO no hago nada
     }
 
-    public void cambiarCanal(int canalSolicitado) {
+    public void mutear() {
         if (estado == Estado.ENCENDIDO) {
+            this.estado = Estado.MUTEADO;
+            this.nuevoVolumen(-this.volumenActual);
+            this.notificar(TelevisorEvento.MUTEADO);
+        }
+        //Si esta APAGADO o MUTEADA no hago nada
+    }
+
+
+    public void cambiarCanal(int canalSolicitado) {
+        if (estado == Estado.ENCENDIDO || estado == Estado.MUTEADO) {
             this.nuevoCanal(canalSolicitado);
         }
         // Si essta APAGADO no hago nada
@@ -64,6 +79,10 @@ public class Televisor extends Observado {
     public void subirVolumen() {
         if (estado == Estado.ENCENDIDO) {
             this.nuevoVolumen(1);
+        } else if (estado == Estado.MUTEADO) {
+            this.estado = Estado.ENCENDIDO;
+            this.nuevoVolumen(1);
+            this.notificar(TelevisorEvento.MUTEADO);
         }
         // Si essta APAGADO no hago nada
     }
@@ -72,6 +91,6 @@ public class Televisor extends Observado {
         if (estado == Estado.ENCENDIDO) {
             this.nuevoVolumen(-1);
         }
-        // Si essta APAGADO no hago nada
+        // Si esta APAGADO o MUTEADO no hago nada
     }
 }

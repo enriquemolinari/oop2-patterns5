@@ -1,5 +1,5 @@
 package tv.modelo;
 
 public enum Estado {
-    APAGADO, ENCENDIDO
+    APAGADO, MUTEADO, ENCENDIDO
 }
