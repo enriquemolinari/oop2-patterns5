@@ -1,6 +1,4 @@
-# oop2-patterns5
-
-## Patrón State
+# Patrón State
 
 **Intención**: La intención del patrón **State** es permitir que un objeto altere su comportamiento cuando cambia su
 estado interno, haciendo que parezca que cambia su clase.
