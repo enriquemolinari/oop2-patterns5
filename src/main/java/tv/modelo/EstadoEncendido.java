@@ -27,6 +27,13 @@ public class EstadoEncendido implements EstadoTelevisor {
 
     }
 
+    @Override
+    public void mutear(Televisor tv) {
+        tv.nuevoEstado(new EstadoMuteado());
+        tv.nuevoVolumen(-tv.volumenActual());
+        tv.notificar(TelevisorEvento.MUTEADO);
+    }
+
     public String toString() {
         return "Encendido";
     }

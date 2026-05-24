@@ -1,7 +1,6 @@
 package tv.modelo;
 
-public class EstadoApagado implements EstadoTelevisor {
-
+public class EstadoMuteado implements EstadoTelevisor {
     @Override
     public void cambiarCanal(int canal, Televisor tv) {
 
@@ -9,7 +8,9 @@ public class EstadoApagado implements EstadoTelevisor {
 
     @Override
     public void subirVolumen(Televisor tv) {
-
+        tv.nuevoVolumen(1);
+        tv.nuevoEstado(new EstadoEncendido());
+        tv.notificar(TelevisorEvento.ENCENDIDO);
     }
 
     @Override
@@ -19,13 +20,13 @@ public class EstadoApagado implements EstadoTelevisor {
 
     @Override
     public void apagar(Televisor tv) {
-
+        tv.nuevoEstado(new EstadoApagado());
+        tv.notificar(TelevisorEvento.APAGADO);
     }
 
     @Override
     public void encender(Televisor tv) {
-        tv.nuevoEstado(new EstadoEncendido());
-        tv.notificar(TelevisorEvento.ENCENDIDO);
+
     }
 
     @Override
@@ -34,6 +35,6 @@ public class EstadoApagado implements EstadoTelevisor {
     }
 
     public String toString() {
-        return "Apagado";
+        return "Muteado";
     }
 }

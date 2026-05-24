@@ -10,4 +10,6 @@ public interface EstadoTelevisor {
     void apagar(Televisor tv);
 
     void encender(Televisor tv);
+
+    void mutear(Televisor tv);
 }

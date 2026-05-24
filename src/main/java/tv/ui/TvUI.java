@@ -57,6 +57,11 @@ public class TvUI extends JFrame implements Observer {
         mensajesEventos.put(TelevisorEvento.VOLUMEN, () -> {
             mostrarMensajeTemporal(LABEL_VOLUMEN + televisor.volumenActual());
         });
+
+        mensajesEventos.put(TelevisorEvento.MUTEADO, () -> {
+//            actualizarVistaBase(LABEL_TV_MUTEADA);
+            mostrarMensajeTemporal("Muteando...");
+        });
     }
 
     @Override
