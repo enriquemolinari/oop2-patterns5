@@ -1,35 +1,40 @@
 package tv.modelo;
 
 public class EstadoApagado implements EstadoTelevisor {
+    private Televisor tv;
+
+    public EstadoApagado(Televisor tv) {
+        this.tv = tv;
+    }
 
     @Override
-    public void cambiarCanal(int canal, Televisor tv) {
+    public void cambiarCanal(int canal) {
 
     }
 
     @Override
-    public void subirVolumen(Televisor tv) {
+    public void subirVolumen() {
 
     }
 
     @Override
-    public void bajarVolumen(Televisor tv) {
+    public void bajarVolumen() {
 
     }
 
     @Override
-    public void apagar(Televisor tv) {
+    public void apagar() {
 
     }
 
     @Override
-    public void encender(Televisor tv) {
-        tv.nuevoEstado(new EstadoEncendido());
+    public void encender() {
+        tv.nuevoEstado(new EstadoEncendido(tv));
         tv.notificar(TelevisorEvento.ENCENDIDO);
     }
 
     @Override
-    public void mutear(Televisor tv) {
+    public void mutear() {
 
     }
 
