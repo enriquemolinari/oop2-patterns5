@@ -47,7 +47,7 @@ public class Calculadora {
         } else if (estado == EstadoCalculadora.ESPERANDO_OPERANDO) {
             this.estado = EstadoCalculadora.ERROR;
         } else {
-            System.out.println("Error");
+            System.out.println(MSG_ESTADO_ERROR);
         }
     }
 }
