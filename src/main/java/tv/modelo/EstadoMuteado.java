@@ -14,9 +14,7 @@ public class EstadoMuteado implements EstadoTelevisor {
 
     @Override
     public void subirVolumen() {
-        tv.nuevoVolumen(1);
-        tv.nuevoEstado(new EstadoEncendido(tv));
-        tv.notificar(TelevisorEvento.ENCENDIDO);
+        tv.subirVolumenCuandoMuteado();
     }
 
     @Override
@@ -26,8 +24,7 @@ public class EstadoMuteado implements EstadoTelevisor {
 
     @Override
     public void apagar() {
-        tv.nuevoEstado(new EstadoApagado(tv));
-        tv.notificar(TelevisorEvento.APAGADO);
+        tv.apagarCuandoMuteado();
     }
 
     @Override

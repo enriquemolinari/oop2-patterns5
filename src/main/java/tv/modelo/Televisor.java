@@ -69,4 +69,31 @@ public class Televisor extends Observado {
     public void mute() {
         this.estadoTelevisor.mutear();
     }
+
+    public void encenderCuandoApagado() {
+        this.nuevoEstado(new EstadoEncendido(this));
+        this.notificar(TelevisorEvento.ENCENDIDO);
+    }
+
+    public void apagarCuandoEncendido() {
+        this.nuevoEstado(new EstadoApagado(this));
+        this.notificar(TelevisorEvento.APAGADO);
+    }
+
+    public void mutearCuandoEntendido() {
+        this.nuevoEstado(new EstadoMuteado(this));
+        this.nuevoVolumen(-this.volumenActual());
+        this.notificar(TelevisorEvento.MUTEADO);
+    }
+
+    public void subirVolumenCuandoMuteado() {
+        this.nuevoVolumen(1);
+        this.nuevoEstado(new EstadoEncendido(this));
+        this.notificar(TelevisorEvento.ENCENDIDO);
+    }
+
+    public void apagarCuandoMuteado() {
+        this.nuevoEstado(new EstadoApagado(this));
+        this.notificar(TelevisorEvento.APAGADO);
+    }
 }

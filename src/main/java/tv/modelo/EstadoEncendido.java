@@ -24,8 +24,7 @@ public class EstadoEncendido implements EstadoTelevisor {
 
     @Override
     public void apagar() {
-        tv.nuevoEstado(new EstadoApagado(tv));
-        tv.notificar(TelevisorEvento.APAGADO);
+        tv.apagarCuandoEncendido();
     }
 
     @Override
@@ -35,9 +34,7 @@ public class EstadoEncendido implements EstadoTelevisor {
 
     @Override
     public void mutear() {
-        tv.nuevoEstado(new EstadoMuteado(tv));
-        tv.nuevoVolumen(-tv.volumenActual());
-        tv.notificar(TelevisorEvento.MUTEADO);
+        tv.mutearCuandoEntendido();
     }
 
     public String toString() {

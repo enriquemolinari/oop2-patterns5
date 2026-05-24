@@ -29,8 +29,7 @@ public class EstadoApagado implements EstadoTelevisor {
 
     @Override
     public void encender() {
-        tv.nuevoEstado(new EstadoEncendido(tv));
-        tv.notificar(TelevisorEvento.ENCENDIDO);
+        tv.encenderCuandoApagado();
     }
 
     @Override
