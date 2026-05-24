@@ -65,4 +65,7 @@ public class Televisor extends Observado {
     public void bajarVolumen() {
         this.estadoTelevisor.bajarVolumen(this);
     }
+
+    public void mute() {
+    }
 }
