@@ -3,17 +3,21 @@ package tv.modelo;
 public class Televisor extends Observado {
     private int canalActual;
     private int volumenActual;
-    private Estado estado;
+    private EstadoTelevisor estadoTelevisor;
 
     public Televisor() {
         super();
-        this.estado = Estado.APAGADO;
+        this.estadoTelevisor = new EstadoApagado();
         this.canalActual = 1;
         this.volumenActual = 10;
     }
 
     public String estado() {
-        return this.estado.toString();
+        return this.estadoTelevisor.toString();
+    }
+
+    void nuevoEstado(EstadoTelevisor nuevoEstado) {
+        this.estadoTelevisor = nuevoEstado;
     }
 
     public int volumenActual() {
@@ -43,39 +47,22 @@ public class Televisor extends Observado {
     }
 
     public void encender() {
-        if (estado == Estado.APAGADO) {
-            this.estado = Estado.ENCENDIDO;
-            this.notificar(TelevisorEvento.ENCENDIDO);
-        }
-        // si esta ENCEDNDIDO no hago nada
+        this.estadoTelevisor.encender(this);
     }
 
     public void apagar() {
-        if (estado == Estado.ENCENDIDO) {
-            this.estado = Estado.APAGADO;
-            this.notificar(TelevisorEvento.APAGADO);
-        }
-        //Si esta APAGADO no hago nada
+        this.estadoTelevisor.apagar(this);
     }
 
     public void cambiarCanal(int canalSolicitado) {
-        if (estado == Estado.ENCENDIDO) {
-            this.nuevoCanal(canalSolicitado);
-        }
-        // Si essta APAGADO no hago nada
+        this.estadoTelevisor.cambiarCanal(canalSolicitado, this);
     }
 
     public void subirVolumen() {
-        if (estado == Estado.ENCENDIDO) {
-            this.nuevoVolumen(1);
-        }
-        // Si essta APAGADO no hago nada
+        this.estadoTelevisor.subirVolumen(this);
     }
 
     public void bajarVolumen() {
-        if (estado == Estado.ENCENDIDO) {
-            this.nuevoVolumen(-1);
-        }
-        // Si essta APAGADO no hago nada
+        this.estadoTelevisor.bajarVolumen(this);
     }
 }
