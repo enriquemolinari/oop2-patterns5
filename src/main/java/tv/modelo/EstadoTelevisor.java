@@ -1,13 +1,13 @@
 package tv.modelo;
 
 public interface EstadoTelevisor {
-    void cambiarCanal(int canal, Televisor tv);
+    void cambiarCanal(int canal);
 
-    void subirVolumen(Televisor tv);
+    void subirVolumen();
 
-    void bajarVolumen(Televisor tv);
+    void bajarVolumen();
 
-    void apagar(Televisor tv);
+    void apagar();
 
-    void encender(Televisor tv);
+    void encender();
 }

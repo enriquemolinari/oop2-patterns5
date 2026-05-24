@@ -7,7 +7,7 @@ public class Televisor extends Observado {
 
     public Televisor() {
         super();
-        this.estadoTelevisor = new EstadoApagado();
+        this.estadoTelevisor = new EstadoApagado(this);
         this.canalActual = 1;
         this.volumenActual = 10;
     }
@@ -47,22 +47,22 @@ public class Televisor extends Observado {
     }
 
     public void encender() {
-        this.estadoTelevisor.encender(this);
+        this.estadoTelevisor.encender();
     }
 
     public void apagar() {
-        this.estadoTelevisor.apagar(this);
+        this.estadoTelevisor.apagar();
     }
 
     public void cambiarCanal(int canalSolicitado) {
-        this.estadoTelevisor.cambiarCanal(canalSolicitado, this);
+        this.estadoTelevisor.cambiarCanal(canalSolicitado);
     }
 
     public void subirVolumen() {
-        this.estadoTelevisor.subirVolumen(this);
+        this.estadoTelevisor.subirVolumen();
     }
 
     public void bajarVolumen() {
-        this.estadoTelevisor.bajarVolumen(this);
+        this.estadoTelevisor.bajarVolumen();
     }
 }
