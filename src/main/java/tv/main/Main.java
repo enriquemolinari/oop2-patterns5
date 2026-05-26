@@ -1,5 +1,6 @@
-package tv.modelo;
+package tv.main;
 
+import tv.modelo.Televisor;
 import tv.ui.ControlRemotoUI;
 import tv.ui.TvUI;
 
